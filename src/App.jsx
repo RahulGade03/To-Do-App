@@ -32,7 +32,6 @@ function App() {
   function handleAdd() {
     setTasks([...tasks, { id: uuidv4(), task: task, isCompleted: false }])
     setTask('')
-    saveTasks()
   }
 
   function handleEdit(id) {
@@ -52,7 +51,6 @@ function App() {
       return task.id !== id
     })
     setTasks(newTasks);
-    saveTasks();
   }
 
   function handleCheckBox(e) {
@@ -63,7 +61,6 @@ function App() {
     let tempTasks = [...tasks]
     tempTasks[index].isCompleted = !tempTasks[index].isCompleted
     setTasks(tempTasks)
-    saveTasks()
   }
 
   const Todo = ({ props }) => {

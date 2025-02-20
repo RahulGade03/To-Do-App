@@ -10,16 +10,19 @@ function App() {
   const [toggle, setToggle] = useState(false)
   const inputRef = useRef(null)
 
-  const saveTasks = () => {
-    localStorage.setItem("tasks", JSON.stringify(tasks))
-    console.log(JSON.parse(localStorage.getItem('tasks')))
-  }
+  useEffect (() => {
+    setTimeout(() => {
+      console.log(JSON.parse(localStorage.getItem('tasks')))
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+        console.log(JSON.parse(localStorage.getItem('tasks')))
+      }, 2000)
+  }, [tasks])
 
   useEffect(() => {
-    console.log(JSON.parse(localStorage.getItem('tasks')))
-    if (localStorage.getItem('tasks')) {
-      setTasks(JSON.parse(localStorage.getItem('tasks')))
-    }
+      console.log(JSON.parse(localStorage.getItem('tasks')))
+      if (localStorage.getItem('tasks')) {
+        setTasks(JSON.parse(localStorage.getItem('tasks')))
+      }
   },[])
 
   function handleChange(e) {

@@ -10,11 +10,11 @@ function App() {
   const [toggle, setToggle] = useState(false)
   const inputRef = useRef(null)
 
-  useEffect(() => {
+  const saveTask = () => {
     let tempTasks = [...tasks]
     localStorage.setItem("tasks", JSON.stringify(tempTasks))
     console.log(JSON.parse(localStorage.getItem('tasks')))
-  }, [tasks])
+  }
 
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem('tasks')))
@@ -30,6 +30,7 @@ function App() {
   function handleAdd() {
     setTasks([...tasks, { id: uuidv4(), task: task, isCompleted: false }])
     setTask('')
+    saveTask()
   }
 
   function handleEdit(id) {
@@ -42,6 +43,7 @@ function App() {
       return task.id !== id
     })
     setTasks(newTasks)
+    saveTask()
   }
 
   function handleDelete(id) {
@@ -50,6 +52,7 @@ function App() {
     })
     console.log(newTasks)
     setTasks(newTasks);
+    saveTask();
   }
 
   function handleCheckBox(e) {
@@ -60,6 +63,7 @@ function App() {
     let tempTasks = [...tasks]
     tempTasks[index].isCompleted = !tempTasks[index].isCompleted
     setTasks(tempTasks)
+    saveTask()
   }
 
   const Todo = ({ props }) => {

@@ -50,7 +50,6 @@ function App() {
     let newTasks = tasks.filter((task) => {
       return task.id !== id
     })
-    console.log(newTasks)
     setTasks(newTasks);
     saveTask();
   }

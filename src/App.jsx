@@ -15,7 +15,7 @@ function App() {
       console.log(JSON.parse(localStorage.getItem('tasks')))
         localStorage.setItem("tasks", JSON.stringify(tasks))
         console.log(JSON.parse(localStorage.getItem('tasks')))
-      }, 2000)
+      }, 1000)
   }, [tasks])
 
   useEffect(() => {

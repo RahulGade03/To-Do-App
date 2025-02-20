@@ -10,9 +10,8 @@ function App() {
   const [toggle, setToggle] = useState(false)
   const inputRef = useRef(null)
 
-  const saveTask = () => {
-    let tempTasks = [...tasks]
-    localStorage.setItem("tasks", JSON.stringify(tempTasks))
+  const saveTasks = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
     console.log(JSON.parse(localStorage.getItem('tasks')))
   }
 
@@ -30,20 +29,19 @@ function App() {
   function handleAdd() {
     setTasks([...tasks, { id: uuidv4(), task: task, isCompleted: false }])
     setTask('')
-    saveTask()
+    saveTasks()
   }
 
   function handleEdit(id) {
-    let tempTask = tasks.findIndex((task) => {
+    let index = tasks.findIndex((task) => {
       return task.id === id
     })
 
-    setTask(tasks[tempTask].task)
+    setTask(tasks[index].task)
     let newTasks = tasks.filter((task) => {
       return task.id !== id
     })
     setTasks(newTasks)
-    saveTask()
   }
 
   function handleDelete(id) {
@@ -51,7 +49,7 @@ function App() {
       return task.id !== id
     })
     setTasks(newTasks);
-    saveTask();
+    saveTasks();
   }
 
   function handleCheckBox(e) {
@@ -62,7 +60,7 @@ function App() {
     let tempTasks = [...tasks]
     tempTasks[index].isCompleted = !tempTasks[index].isCompleted
     setTasks(tempTasks)
-    saveTask()
+    saveTasks()
   }
 
   const Todo = ({ props }) => {

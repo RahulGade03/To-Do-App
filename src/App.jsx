@@ -12,9 +12,7 @@ function App() {
 
   useEffect(() => {
     let tempTasks = [...tasks]
-    if (tempTasks.length > 0){
-      localStorage.setItem("tasks", JSON.stringify(tempTasks))
-    }
+    localStorage.setItem("tasks", JSON.stringify(tempTasks))
     console.log(JSON.parse(localStorage.getItem('tasks')))
   }, [tasks])
 

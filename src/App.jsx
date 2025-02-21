@@ -19,10 +19,10 @@ function App() {
   }, [tasks])
 
   useEffect(() => {
-      console.log(JSON.parse(localStorage.getItem('tasks')))
-      if (localStorage.getItem('tasks')) {
-        setTasks(JSON.parse(localStorage.getItem('tasks')))
-      }
+    console.log(JSON.parse(localStorage.getItem('tasks')))
+    if (localStorage.getItem('tasks')) {
+      setTasks(JSON.parse(localStorage.getItem('tasks')))
+    }
   },[])
 
   function handleChange(e) {
@@ -35,11 +35,11 @@ function App() {
   }
 
   function handleEdit(id) {
-    let index = tasks.findIndex((task) => {
+    let tempTask = tasks.findIndex((task) => {
       return task.id === id
     })
 
-    setTask(tasks[index].task)
+    setTask(tasks[tempTask].task)
     let newTasks = tasks.filter((task) => {
       return task.id !== id
     })
@@ -50,6 +50,7 @@ function App() {
     let newTasks = tasks.filter((task) => {
       return task.id !== id
     })
+    console.log(newTasks)
     setTasks(newTasks);
   }
 
@@ -81,8 +82,8 @@ function App() {
 
   return (
     <div className="flex justify-center items-start min-h-screen bg-indigo-300">
-      <div className="bg-indigo-400 min-w-500px min-h-[500px] px-10 rounded-2xl my-4">
-        <h1 className="text-3xl font-bold underline text-center py-5">
+      <div className="bg-indigo-400 max-w-[95vw] md:min-w-500px min-h-[500px] px-10 rounded-2xl my-4">
+        <h1 className="text-3xl font-bold text-center py-5">
           GoatTask - Your Task Planner
         </h1>
 

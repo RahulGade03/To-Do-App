@@ -82,22 +82,23 @@ function App() {
 
   return (
     <div className="flex justify-center items-start min-h-screen bg-indigo-300">
-      <div className="bg-indigo-400 max-w-[95vw] md:min-w-500px min-h-[500px] px-10 rounded-2xl my-4">
-        <h1 className="text-3xl font-bold text-center py-5">
+      <div className="bg-indigo-400 max-w-[95vw] md:min-w-[500px] min-h-[500px] rounded-2xl my-4">
+        <h1 className="text-3xl font-bold text-center py-5 max-w-[98%] text-2xl">
           GoatTask - Your Task Planner
         </h1>
 
         <div className="container my-5 w-[100%]">
-          <div className="insert flex justify-center gap-5 border-t-2 border-b-2 py-2">
+          <div className="insert min-w-[100%] flex justify-center gap-5 border-t-2 border-b-2 py-2">
             <input type="text" placeholder='Enter your task...' className='bg-white text-black rounded-2xl p-4' value={task} onChange={handleChange} />
             <button className='bg-indigo-900 px-10 rounded-2xl text-white disabled:bg-indigo-400 disabled:text-indigo-400' disabled={task.length<3} onClick={handleAdd}>Add</button>
           </div>
 
           <div className="tasks">
-            <label className='flex items-center gap-5 border-b-2'>
+            <label className='flex items-center justify-center gap-5 w-[70%]'>
               <input type="checkbox" checked={toggle} onClick={() => {setToggle(!toggle)}} ref={inputRef} className='scale-150'/>
               <span className='text-xl'>Show Finished</span>
             </label>
+            <hr className='border-1'/>
             {tasks.map((item) => {
               return (
                 <Todo props={item} />

@@ -87,7 +87,7 @@ function App() {
           GoatTask - Your Task Planner
         </h1>
 
-        <div className="container my-5">
+        <div className="container my-5 w-[100%]">
           <div className="insert flex justify-center gap-5 border-t-2 border-b-2 py-2">
             <input type="text" placeholder='Enter your task...' className='bg-white text-black rounded-2xl p-4' value={task} onChange={handleChange} />
             <button className='bg-indigo-900 px-10 rounded-2xl text-white disabled:bg-indigo-400 disabled:text-indigo-400' disabled={task.length<3} onClick={handleAdd}>Add</button>

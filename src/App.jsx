@@ -66,14 +66,14 @@ function App() {
 
   const Todo = ({ props }) => {
     return ((toggle || !props.isCompleted) && (
-      <div key={props.id} className="flex justify-between items-center my-5">
+      <div key={props.id} className="flex justify-between items-center my-3 w-[90%]">
         <div className='flex gap-5'>
         <input type="checkbox" name={props.id} onChange={handleCheckBox} className='cursor-pointer scale-150' />
         <div className={props.isCompleted ? 'line-through' : ''}>{props.task}</div>
         </div>
         <div className='flex gap-5'>
-          <button className="bg-indigo-900 px-5 rounded-2xl text-white py-1" onClick={() => { handleEdit(props.id) }}>Edit</button>
-          <button className="bg-indigo-900 px-5 rounded-2xl text-white py-1" onClick={() => { handleDelete(props.id) }}>Delete</button>
+          <button className="bg-indigo-900 px-5 rounded-2xl text-white py-1 cursor-pointer" onClick={() => { handleEdit(props.id) }}>Edit</button>
+          <button className="bg-indigo-900 px-5 rounded-2xl text-white py-1 cursor-pointer" onClick={() => { handleDelete(props.id) }}>Delete</button>
         </div>
       </div>
     ))
@@ -90,15 +90,15 @@ function App() {
         <div className="container my-5 w-[100%]">
           <div className="insert w-[100%] flex justify-center gap-5 border-t-2 border-b-2 py-2">
             <input type="text" placeholder='Enter your task...' className='bg-white text-black rounded-2xl p-2 md:p-4 ' value={task} onChange={handleChange} />
-            <button className='bg-indigo-900 md:px-10 px-6 rounded-2xl text-white disabled:bg-indigo-400 disabled:text-indigo-400' disabled={task.length<3} onClick={handleAdd}>Add</button>
+            <button className='bg-indigo-900 md:px-10 px-6 rounded-2xl text-white disabled:bg-indigo-400 disabled:text-indigo-400 cursor-pointer' disabled={task.length<3} onClick={handleAdd}>Add</button>
           </div>
 
-          <div className="tasks">
+          <div className="tasks flex flex-col items-center">
             <label className='flex items-center justify-center gap-5 w-[70%]'>
               <input type="checkbox" checked={toggle} onClick={() => {setToggle(!toggle)}} ref={inputRef} className='scale-150'/>
               <span className='text-xl'>Show Finished</span>
             </label>
-            <hr className='border-1'/>
+            <div className='border-1 w-[100%]'></div>
             {tasks.map((item) => {
               return (
                 <Todo props={item} />
